@@ -1,0 +1,40 @@
+{
+  "name": "meganet",
+  "version": "1.0.0",
+  "description": "BackEnd del proeyecto de pagina web de mi hermanos",
+  "main": "index.js",
+  "scripts": {   
+    "start": "node ./bin/www",
+    "devstart": "nodemon  ./bin/www",
+    "test": "jasmine",
+    "heroku-postbuild ": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexisrock/MeganetComputer.git"
+  },
+  "keywords": [
+    "berlis1955"
+  ],
+  "author": "alexis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexisrock/MeganetComputer/issues"
+  },
+  "homepage": "https://github.com/alexisrock/MeganetComputer#readme",
+  "dependencies": {
+    "connect-mongodb-session": "^2.4.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "http-errors": "^1.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
+    "mongoose": "^5.11.14",
+    "mongoose-unique-validator": "^2.0.3",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7",
+    "passport": "^0.4.1",
+    "request": "^2.88.2",
+    "serve": "^11.3.2"
+  }
+}
