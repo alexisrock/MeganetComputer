@@ -46,3 +46,7 @@ exports.Cliente_update = function(req, res){
     });
 
 }
+
+
+
+

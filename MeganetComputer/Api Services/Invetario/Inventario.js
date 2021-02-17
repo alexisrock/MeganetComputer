@@ -23,3 +23,5 @@ let InventarioSchema = new Schema({
     },
 });
 
+module.exports = mongoose.model('Inventario', InventarioSchema);
+
