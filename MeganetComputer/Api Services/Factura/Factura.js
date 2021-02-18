@@ -15,6 +15,10 @@ let FacturaSchema = new Schema({
     fechaCreacion : {
         type: Date,
         default : Date.now
+    },
+    fechamodificacion : {
+        type: Date,
+        default : Date.now
     }
     
 });

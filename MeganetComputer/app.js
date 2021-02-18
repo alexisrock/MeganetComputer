@@ -11,7 +11,7 @@ var categoriaRouter = require('./Api Services/Categoria/CategoriaRoutes');
 var invetarioRouter = require('./Api Services/Invetario/InventarioRoutes');
 var marcaRouter = require('./Api Services/Marca/MarcaRoutes');
 var productoRouter = require('./Api Services/Producto/ProductoRoutes');
-
+var facturaRouter = require('./Api Services/Factura/FacturaRoutes');
 
 
 var app = express();
@@ -46,6 +46,7 @@ app.use('/api/Categoria', categoriaRouter);
 app.use('/api/Inventario', invetarioRouter);
 app.use('/api/Marca', marcaRouter);
 app.use('/api/Producto', productoRouter);
+app.use('/api/Factura', facturaRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
