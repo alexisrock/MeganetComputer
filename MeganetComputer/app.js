@@ -4,6 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const jwt = require('jsonwebtoken');
+
+
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var clienteRouter = require('./Api Services/Cliente/ClienteRoutes');
@@ -12,10 +16,10 @@ var invetarioRouter = require('./Api Services/Invetario/InventarioRoutes');
 var marcaRouter = require('./Api Services/Marca/MarcaRoutes');
 var productoRouter = require('./Api Services/Producto/ProductoRoutes');
 var facturaRouter = require('./Api Services/Factura/FacturaRoutes');
-
+var authApiRouter = require('./Api Services/Auth/AuthRoutes');
 
 var app = express();
-
+app.set('secretKey', 'Meganet162');
 
 var mongoose = require('mongoose');
 const { assert } = require('console');
@@ -24,8 +28,6 @@ mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true, use
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB Connection error:'));
-
-
 
 
 // view engine setup
@@ -41,12 +43,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-app.use('/api/Clientes', clienteRouter);
-app.use('/api/Categoria', categoriaRouter);
-app.use('/api/Inventario', invetarioRouter);
-app.use('/api/Marca', marcaRouter);
-app.use('/api/Producto', productoRouter);
-app.use('/api/Factura', facturaRouter);
+app.use('/api/auth', authApiRouter);
+app.use('/api/Clientes', validarConsumo, clienteRouter);
+app.use('/api/Categoria',validarConsumo, categoriaRouter);
+app.use('/api/Inventario',validarConsumo, invetarioRouter);
+app.use('/api/Marca',validarConsumo, marcaRouter);
+app.use('/api/Producto',validarConsumo, productoRouter);
+app.use('/api/Factura',validarConsumo, facturaRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -64,5 +67,26 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+
+
+function validarConsumo(req, res, next){
+
+
+  jwt.verify(req.headers['tokenkey'], req.app.get('secretKey'), function(err, decoded){
+   if(err){
+       res.json({status: 'error', message: err.message, data: null});
+   }else{
+     req.body.userId = decoded.id;
+     console.log('jwt verificado: '+decoded);
+     next(); 
+   }
+  });
+
+}
+
+
+
 
 module.exports = app;

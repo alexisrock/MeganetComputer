@@ -1,7 +1,7 @@
 var Marca = require('./Marca');
 
 
-exports.Marca_list = function (req, res) {
+exports.Marca_list = function(req, res) {
     Marca.find({}, function (err, marcas) {
         res.status(200).json({
             marcas: marcas
@@ -9,11 +9,12 @@ exports.Marca_list = function (req, res) {
     });
 }
 
-exports,Marca_create = function (eq, res) {
+exports.Marca_create = function(req, res) {
+    console.log("ingreso");
     var nuevaMarca = new Marca({
         Descripcion: req.body.marcaproducto
     });
-
+console.log("creando"+nuevaMarca);
     nuevaMarca.save(function(err){
         if(err) res.status(400).json({error: err.message });    
         res.status(200).json(nuevaMarca);

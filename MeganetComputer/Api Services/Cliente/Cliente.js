@@ -36,6 +36,8 @@ let ClienteSchema = new Schema({
         type: Boolean,
         default: false
     },
+    passwordResetToken: String,
+    passwordResetTokenExpires: Date
 });
 
 
