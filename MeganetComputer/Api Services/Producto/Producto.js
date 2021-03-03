@@ -14,7 +14,7 @@ let ProductoSchema = new Schema({
         trim: true
     },
     Precio : {
-        type: Decimal128,
+        type: Number,
         required: true
     },
     Marca: {type: mongoose.Schema.Types.ObjectId, ref: 'Marca'},
@@ -27,7 +27,7 @@ let ProductoSchema = new Schema({
         type: Date,
         default: Date.now 
     },
-    PrecioVenta:  Decimal128,
+    PrecioVenta:  Number,
     Estado: {
         type: Boolean,
         default: true
@@ -36,7 +36,11 @@ let ProductoSchema = new Schema({
         type: Boolean,
         default: false
     },
-    Categoria:{type: mongoose.Schema.Types.ObjectId, ref: 'Categoria' }
+    Categoria:{type: mongoose.Schema.Types.ObjectId, ref: 'Categoria' },
+    UrlImagen: {
+        type:String
+    
+    }
 
 });
 

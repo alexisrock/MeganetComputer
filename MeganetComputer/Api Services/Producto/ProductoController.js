@@ -2,9 +2,9 @@ var Producto = require('./Producto');
 
 
 exports.Producto_list = function(req, res){
-    Producto.find({}, function(factura){
+    Producto.find({}).populate('Marca').populate('Categoria').exec(function(err,productos){   
         res.status(200).json({
-            factura: factura
+            product: productos
         });
     });
 
@@ -17,25 +17,27 @@ exports.Producto_create = function(req, res){
         Nombre : req.body.nombreproducto,
         Precio : req.body.precioproducto,
         Marca : req.body.idmarca,
-        Descripcion : req.body.descriproducto,
-        FechaCreacion : Date.now,
+        Descripcion : req.body.descriproducto, 
         PrecioVenta : req.body.preciovenproducto,
         EsPaginaInicial: req.body.paginainiproducto,
-        Categoria: req.body.idCategoria
+        Categoria: req.body.idCategoria,
+        UrlImagen: req.body.urldeimagen
     });
 
-   const  result =  Producto.where({'EsPaginaInicial': true}).count();
+  Producto.find({EsPaginaInicial: true}).countDocuments(function(err, result){
+            console.log(result);
+        if(result>10){
+            res.status(400).json({
+                error: "Ya a ingresado el numero maximo de productos para ver en la pagina principal"
+            });
 
-   if(result>10){
-    nuevoProducto.save(function(err){
-        if(err) res.status(400).json({error: err.message });    
-        res.status(200).json(nuevoProducto);
+        }else{    
+                nuevoProducto.save(function(err){
+                if(err) res.status(400).json({error: err.message });    
+                res.status(200).json(nuevoProducto);
+            });
+        }
     });
-   }else{
-    res.status(400).json({
-        error: "Ya a ingresado el numero maximo de productos para ver en la pagina principal"
-    });
-   }
 
 }
 

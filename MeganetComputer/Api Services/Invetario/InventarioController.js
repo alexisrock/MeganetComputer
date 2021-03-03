@@ -3,9 +3,9 @@ var Inventario = require('./Inventario');
 
 
 exports.Invetario_list = function(req, res){
-    Inventario.find({}, function(inventario){
+    Inventario.find({}).populate('Producto').exec(function(err,inventario){
         res.status(200).json({
-            invemtario: inventario
+            inventario: inventario
         });
     });
 }
@@ -53,7 +53,7 @@ exports.Inventario_delete = function(req, res){
     })
 }
 
-exports.Categoria_GetCategoria = function(req, res) {
+exports.Inventario_GetInventario = function(req, res) {
     var invent = Inventario.findById(req.params.id);
     res.status(200).json({
         inventario: invent
