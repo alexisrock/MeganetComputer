@@ -18,10 +18,11 @@ import { AlertModule,
     TabsModule,
     TimepickerModule,
     TooltipModule, } from 'ngx-foundation';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, FooterComponent],
   imports: [
     CommonModule,
     AccordionModule.forRoot(),
@@ -42,6 +43,6 @@ import { AlertModule,
     TooltipModule.forRoot(),
     TypeaheadModule.forRoot(),
   ],
-  exports: [HeaderComponent]
+  exports: [HeaderComponent, FooterComponent]
 })
 export class SharedModule { }
