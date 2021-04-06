@@ -1,12 +1,17 @@
-
-
-
-<div class="grid-x grid-margin-x" >
-    <div class="cell small-4">
-        <img src="../../../assets/Img/meganet.jpg"  />
+<div class="grid-x grid-padding-x colorfondo" style="margin-top: 14rem;" >
+  
+   
+    <div class="cell medium-4 medium-cell-block-y ">             
      
     </div>
-    <div class="cell small-4 card">
+    <div class="cell medium-4 medium-cell-block-y  card">
+        <br/>
+        <img src="../../../assets/Img/meganet.jpg"   class="margin"  />
+        <br/>
+        <div *ngIf="mensajeError!== ''" > 
+            <div class="label alert">{{mensajeError}}</div>    
+        </div>
+        <br/>
         <input placeholder="Usuario"  type="text" #idusuario>
         <input placeholder="Contraseña"  type="text" #password>
         <button type="button" class="button"  (click)="login(idusuario.value, password.value)">Ingresar</button>

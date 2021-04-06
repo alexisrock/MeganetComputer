@@ -18,8 +18,14 @@ var productoRouter = require('./Api Services/Producto/ProductoRoutes');
 var facturaRouter = require('./Api Services/Factura/FacturaRoutes');
 var authApiRouter = require('./Api Services/Auth/AuthRoutes');
 var vendedorRouter = require('./Api Services/Vendedor/VendedorRoutes');
+var cors = require('cors');
 var app = express();
 app.set('secretKey', 'Meganet162');
+
+
+app.use(cors());
+
+
 
 var mongoose = require('mongoose');
 const { assert } = require('console');
@@ -69,7 +75,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
 
 
 

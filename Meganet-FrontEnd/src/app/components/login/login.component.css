@@ -1,3 +1,18 @@
-body {
-background-color: #2F5597;
+.colorfondo{
+    background-color: #2F5597;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
 }
+
+.margin{
+    margin-top: 4rem;
+    margin-left: 4rem;
+}
+
+img{
+    height: 30%;
+    width:  62%;
+}
+
+
+

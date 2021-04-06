@@ -29,6 +29,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { APP_INITIALIZER, Injectable, InjectionToken  } from '@angular/core';
 import { AuthService } from './services/auth.service';
+import { PrincipalComponent } from './components/principal/principal.component';
 
 
 export interface AppConfig{
@@ -51,7 +52,8 @@ export const APP_CONFIG = new InjectionToken<AppConfig>('app.config');
     ContentComponent,
     CrearProductoComponent,
     ListarProductoComponent,
-    LoginComponent
+    LoginComponent,
+    PrincipalComponent
   ],
   imports: [
     BrowserModule,
