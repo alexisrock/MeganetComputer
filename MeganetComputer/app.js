@@ -17,9 +17,15 @@ var marcaRouter = require('./Api Services/Marca/MarcaRoutes');
 var productoRouter = require('./Api Services/Producto/ProductoRoutes');
 var facturaRouter = require('./Api Services/Factura/FacturaRoutes');
 var authApiRouter = require('./Api Services/Auth/AuthRoutes');
-
+var vendedorRouter = require('./Api Services/Vendedor/VendedorRoutes');
+var cors = require('cors');
 var app = express();
 app.set('secretKey', 'Meganet162');
+
+
+app.use(cors());
+
+
 
 var mongoose = require('mongoose');
 const { assert } = require('console');
@@ -50,6 +56,8 @@ app.use('/api/Inventario',validarConsumo, invetarioRouter);
 app.use('/api/Marca',validarConsumo, marcaRouter);
 app.use('/api/Producto',validarConsumo, productoRouter);
 app.use('/api/Factura',validarConsumo, facturaRouter);
+app.use('/api/Vendedor', vendedorRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -70,7 +78,6 @@ app.use(function(err, req, res, next) {
 
 
 
-
 function validarConsumo(req, res, next){
 
 
@@ -83,6 +90,8 @@ function validarConsumo(req, res, next){
      next(); 
    }
   });
+
+  
 
 }
 
