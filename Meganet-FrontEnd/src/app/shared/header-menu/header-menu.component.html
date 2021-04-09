@@ -8,7 +8,7 @@
         <li>
             <a href="#" dropdownToggle   aria-controls="dropdown-categorias">Categorias</a>
             <ul id="dropdown-categorias" *dropdownMenu class="menu is-dropdown-submenu" role="menu">
-                <li><a href="#">Crear</a></li>
+                <li><a  [routerLink]="['admin/crearCategoria']">Crear</a></li>
                 <li><a href="#">Editar</a></li>
             </ul>
        </li>   
@@ -26,26 +26,15 @@
                 <li><a href="#">Editar</a></li>
             </ul>
         </li> 
+        <li>
+          <a href="#" dropdownToggle   aria-controls="dropdown-categorias">Cerrar sesion</a>          
+      </li> 
     </ul>
    </div>
 
     <div class="top-bar-right   large-3 cell ">
         <ul class="menu grid-x">     
-       
-       <ul class="dropdown vertical   large-7 menu" dropdown #dropdown="bs-dropdown" [autoClose]="false">
-         <li class="is-dropdown-submenu-parent">
-           <button dropdownToggle type="button" class="clear button round secondary" aria-controls="cardropdown">
-             <span class="material-icons" style="font-size: 2rem;">shopping_cart</span>
-           </button>
-           <ul id="cardropdown" *dropdownMenu class="dropdown-pane" role="menu">
-             <p role="menuitem"> Alexis Bueno </p>
-        
-            
-             
-     
-           </ul>
-         </li>
-       </ul>
+
        <ul class="dropdown vertical menu large-3" dropdown #dropdown="bs-dropdown" [autoClose]="false">
          <li class="is-dropdown-submenu-parent">
            <button dropdownToggle type="button" class="clear button round secondary" aria-controls="accountdropdown">
@@ -54,8 +43,7 @@
            <ul id="accountdropdown" *dropdownMenu class="menu is-dropdown-submenu" role="menu">
              <li role="menuitem"><a href="#">Alexis Bueno </a></li>
              <hr/>
-             <li role="menuitem"><a href="#"><span class="material-icons">settings
-               </span>  Cuenta </a></li>
+        
              <li role="menuitem"><a href="#"><span class="material-icons">
                power_settings_new
                </span>Cerrar Sesion</a></li>

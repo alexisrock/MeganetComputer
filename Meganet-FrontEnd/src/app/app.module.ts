@@ -21,16 +21,15 @@ import { AppComponent } from './app.component';
 import { HttpClient, HttpClientModule, HttpHeaders, HttpRequest} from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { ContentComponent } from './components/content/content.component';
-import { CrearProductoComponent } from './components/crear-producto/crear-producto.component';
 
-import { ListarProductoComponent } from './components/listar-producto/listar-producto.component';
-import { LoginComponent } from './components/login/login.component';
+import { ListarProductoComponent } from './components/Admin/listar-producto/listar-producto.component';
+import { LoginComponent } from './components/Admin/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { APP_INITIALIZER, Injectable, InjectionToken  } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { PrincipalComponent } from './components/principal/principal.component';
-
+import { AdminModule } from './components/Admin/admin.module';
 
 export interface AppConfig{
   apiEndpoint: string;
@@ -49,15 +48,14 @@ export const APP_CONFIG = new InjectionToken<AppConfig>('app.config');
 @NgModule({
   declarations: [
     AppComponent,
-    ContentComponent,
-    CrearProductoComponent,
-    ListarProductoComponent,
-    LoginComponent,
+    ContentComponent,   
     PrincipalComponent
+ 
   ],
   imports: [
     BrowserModule,
     SharedModule,
+    AdminModule,
     AppRoutingModule,
     HttpClientModule,
     AccordionModule.forRoot(),
