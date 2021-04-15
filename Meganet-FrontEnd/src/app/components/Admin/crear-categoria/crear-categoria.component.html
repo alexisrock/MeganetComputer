@@ -1,1 +1,36 @@
-<p>crear-categoria works!</p>
+<app-header-menu></app-header-menu>
+<br>
+<div  class="grid-x grid-margin-x">
+  <div class="cell medium-6 large-1"> </div>
+  <div class="cell medium-6 large-10">
+    <div class="card" >
+      <div class="card-section">
+        <h2 class="text-center">Categoria</h2>
+        <hr/>
+        <form [formGroup]="myform">
+
+          <alert type="{{tipoalerta}}"  *ngIf="dismissible"  (onClosed)="onClosed()">
+            <span [innerHtml]="mensaje"></span>
+          </alert>
+
+          <div class="grid-x">
+            <div class="cell   small-2"><label>Nombre categoria</label></div>
+            <div class="cell   small-2">
+              <input formControlName="nombreCampo" type="text"/>
+            </div>
+            <div class="cell   small-2">
+              <button class="button primary" (click)="SaveCategoria()">Guardar</button>
+            </div>
+          </div>
+
+
+
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+  <div class="cell medium-6 large-1"> </div>
+</div>
+

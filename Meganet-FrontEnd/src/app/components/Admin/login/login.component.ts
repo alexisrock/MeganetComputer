@@ -3,6 +3,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,30 +11,44 @@ import { DOCUMENT } from '@angular/common';
 })
 export class LoginComponent implements OnInit {
   mensajeError: string;
-  constructor(public authService: AuthService,  public router: Router, @Inject(DOCUMENT) private _document) { }
+  public myform: FormGroup;
+  constructor(public authService: AuthService,  public router: Router, @Inject(DOCUMENT) private _document,  formbuilder: FormBuilder) {
+    this.myform = formbuilder.group({
+      idusuario: new FormControl('',Validators.compose([
+        Validators.required,
+      ])),
+      password:  new FormControl('',Validators.compose([
+        Validators.required,
+      ])),
+    });
+
+  };
 
   ngOnInit(): void {
-  
+
   }
-  
-  login(username: string, password: string){
+
+  login(){
     this.mensajeError = '';
 
-   this.authService.login(username, password).pipe().subscribe(
+   this.authService.login(this.myform.value.idusuario, this.myform.value.password).subscribe(
     data =>{
-      if (data>0) {
-        this.router.navigate(['admin']);
-      }     
-    }, error=>{   
+      if (data!=null) {
+        this.authService.setToken(data['token']);
+        this.authService.setUser(data['usuario'].usuario);
+        this.router.navigateByUrl('admin');
+      }
+
+    }, error=>{
       this.mensajeError = 'Login incorrecto.';
       setTimeout(function() {
         this.mensajeError = '';
       }.bind(this), 2500);
-          this.router.navigate(['/']);
+          this.router.navigateByUrl('/');
     }
 
    );
- 
+
   }
 
 

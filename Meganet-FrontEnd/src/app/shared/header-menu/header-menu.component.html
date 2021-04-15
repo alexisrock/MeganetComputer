@@ -1,39 +1,39 @@
 
 
-  
+
  <div class="top-bar grid-x grid-margin-x" id="responsive-menu">
    <div class="top-bar-left large-9">
-     <ul class="dropdown menu" dropdown #dropdown="bs-dropdown">
+     <ul class="dropdown menu" dropdown #dropdown="bs-dropdown" >
         <li class="menu-text">Inicio</li>
-        <li>
-            <a href="#" dropdownToggle   aria-controls="dropdown-categorias">Categorias</a>
+        <li dropdown #dropdownText="bs-dropdown"   class="is-dropdown-submenu-parent">
+            <a dropdownToggle   >Categorias</a>
             <ul id="dropdown-categorias" *dropdownMenu class="menu is-dropdown-submenu" role="menu">
-                <li><a  [routerLink]="['admin/crearCategoria']">Crear</a></li>
-                <li><a href="#">Editar</a></li>
+                <li><a  href="crearCategoria">Crear categoria</a></li>
+                <li><a href="#">Editar categoria</a></li>
             </ul>
-       </li>   
-        <li>
-            <a href="#" dropdownToggle   aria-controls="dropdown-categorias">Marcas</a>
-            <ul id="dropdown-categorias" *dropdownMenu class="menu is-dropdown-submenu" role="menu">
-                <li><a href="#">Crear</a></li>
-                <li><a href="#">Editar</a></li>
+       </li>
+        <li dropdown #dropdownText="bs-dropdown"   class="is-dropdown-submenu-parent">
+            <a  dropdownToggle  >Marcas</a>
+            <ul id="dropdown-marca" *dropdownMenu class="menu is-dropdown-submenu" role="menu">
+                <li><a href="">Crear marca</a></li>
+                <li><a href="#">Editar marca</a></li>
             </ul>
-        </li>   
-        <li>
-            <a href="#" dropdownToggle   aria-controls="dropdown-categorias">Productos</a>
-            <ul id="dropdown-categorias" *dropdownMenu class="menu is-dropdown-submenu" role="menu">
-                <li><a href="#">Crear</a></li>
-                <li><a href="#">Editar</a></li>
+        </li>
+        <li dropdown #dropdownText="bs-dropdown"   class="is-dropdown-submenu-parent">
+            <a  dropdownToggle  >Productos</a>
+            <ul id="dropdown-producto" *dropdownMenu class="menu is-dropdown-submenu" role="menu">
+                <li><a href="crearProducto">Crear producto</a></li>
+                <li><a href="#">Editar producto</a></li>
             </ul>
-        </li> 
+        </li>
         <li>
-          <a href="#" dropdownToggle   aria-controls="dropdown-categorias">Cerrar sesion</a>          
-      </li> 
+
+      </li>
     </ul>
    </div>
 
     <div class="top-bar-right   large-3 cell ">
-        <ul class="menu grid-x">     
+        <ul class="menu grid-x">
 
        <ul class="dropdown vertical menu large-3" dropdown #dropdown="bs-dropdown" [autoClose]="false">
          <li class="is-dropdown-submenu-parent">
@@ -43,13 +43,13 @@
            <ul id="accountdropdown" *dropdownMenu class="menu is-dropdown-submenu" role="menu">
              <li role="menuitem"><a href="#">Alexis Bueno </a></li>
              <hr/>
-        
-             <li role="menuitem"><a href="#"><span class="material-icons">
+
+             <li role="menuitem"><a (click)="closedSession()"><span class="material-icons">
                power_settings_new
                </span>Cerrar Sesion</a></li>
-            
-             
-     
+
+
+
            </ul>
          </li>
        </ul>

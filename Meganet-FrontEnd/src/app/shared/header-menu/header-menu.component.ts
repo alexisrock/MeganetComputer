@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header-menu',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderMenuComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(public auth: AuthService, public router: Router,) { }
 
   ngOnInit(): void {
+    this.GetUserLoggued();
+  }
+
+  GetUserLoggued(){
+    return this.auth.getUser();
+  }
+
+  closedSession(){
+    this.auth.logout();
+    this.router.navigateByUrl('/');
   }
 
 }
