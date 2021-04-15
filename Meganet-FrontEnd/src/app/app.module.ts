@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AlertModule, 
+import { AlertModule,
   AccordionModule,
-   ButtonsModule, 
+   ButtonsModule,
    CarouselModule ,
     CollapseModule,
     BsDatepickerModule,
@@ -28,8 +28,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { APP_INITIALIZER, Injectable, InjectionToken  } from '@angular/core';
 import { AuthService } from './services/auth.service';
-import { PrincipalComponent } from './components/principal/principal.component';
-import { AdminModule } from './components/Admin/admin.module';
+
+import { AdminModule } from './components/Admin/Admin.module';
 
 export interface AppConfig{
   apiEndpoint: string;
@@ -48,9 +48,8 @@ export const APP_CONFIG = new InjectionToken<AppConfig>('app.config');
 @NgModule({
   declarations: [
     AppComponent,
-    ContentComponent,   
-    PrincipalComponent
- 
+    ContentComponent
+
   ],
   imports: [
     BrowserModule,
@@ -76,7 +75,7 @@ export const APP_CONFIG = new InjectionToken<AppConfig>('app.config');
     TooltipModule.forRoot(),
     TypeaheadModule.forRoot(),
   ],
-  providers: [  
+  providers: [
     AuthService,
     {provide: APP_CONFIG, useValue: APP_CONFIG_VALUE},],
   bootstrap: [AppComponent]
