@@ -6,7 +6,8 @@ import { ContentComponent } from './components/content/content.component';
 import { PrincipalComponent } from './components/Admin/principal/principal.component';
 import { UserloguinGuard } from './guard/userloguin.guard';
 import { CrearProductoComponent } from './components/Admin/crear-producto/crear-producto.component';
-import { CrearCategoriaComponent } from './components/Admin/crear-categoria/crear-categoria.component';
+import { CrearCategoriaComponent } from './components/Admin/Categorias/crear-categoria/crear-categoria.component';
+import { ListarCategoriaComponent } from './components/Admin/Categorias/listar-categoria/listar-categoria.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: "full" },
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'admin', component: PrincipalComponent,  canActivate: [UserloguinGuard],  pathMatch: "full" },
   { path: 'crearProducto', component: CrearProductoComponent, canActivate: [UserloguinGuard] },
   { path: 'crearCategoria', component: CrearCategoriaComponent,  canActivate: [UserloguinGuard]},
-
+  { path: 'EditarCategoria', component: ListarCategoriaComponent,  canActivate: [UserloguinGuard]},
+  { path: 'EditarCategoria', component: ListarCategoriaComponent, canActivate: [UserloguinGuard] ,   pathMatch: "full" },
   { path: '**', redirectTo: 'PrincipalProductos', pathMatch: 'full'  }
 ]
 

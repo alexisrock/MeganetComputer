@@ -21,15 +21,14 @@ import { AppComponent } from './app.component';
 import { HttpClient, HttpClientModule, HttpHeaders, HttpRequest} from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { ContentComponent } from './components/content/content.component';
-
 import { ListarProductoComponent } from './components/Admin/listar-producto/listar-producto.component';
 import { LoginComponent } from './components/Admin/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
-
 import { APP_INITIALIZER, Injectable, InjectionToken  } from '@angular/core';
 import { AuthService } from './services/auth.service';
-
 import { AdminModule } from './components/Admin/Admin.module';
+import { HeaderMenuComponent } from './shared/header-menu/header-menu.component';
+import {TableModule} from 'primeng/table';
 
 export interface AppConfig{
   apiEndpoint: string;
@@ -49,6 +48,10 @@ export const APP_CONFIG = new InjectionToken<AppConfig>('app.config');
   declarations: [
     AppComponent,
     ContentComponent
+
+  ],exports: [
+    HeaderMenuComponent,
+    TableModule
 
   ],
   imports: [
@@ -77,6 +80,7 @@ export const APP_CONFIG = new InjectionToken<AppConfig>('app.config');
   ],
   providers: [
     AuthService,
+    SharedModule,
     {provide: APP_CONFIG, useValue: APP_CONFIG_VALUE},],
   bootstrap: [AppComponent]
 })

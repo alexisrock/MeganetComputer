@@ -2,8 +2,8 @@ import { error } from '@angular/compiler/src/util';
 import { Component, OnInit, SecurityContext } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
-import { HeaderMenuComponent} from '../../../shared/header-menu/header-menu.component'
-import { CategoriaServicesService } from '../services/categoria-services.service';
+
+import { CategoriaServicesService } from '../../services/categoria-services.service';
 @Component({
   selector: 'app-crear-categoria',
   templateUrl: './crear-categoria.component.html',
@@ -37,7 +37,7 @@ export class CrearCategoriaComponent implements OnInit {
       this.categoriaServices.categoria.nombreCategoria = this.myform.value.nombreCampo;
       this.categoriaServices.SaveCategoria().subscribe( data =>{
         console.log(data);
-        if (data['error']!='error') {
+        if (data['data']===undefined) {
           this.dismissible = true;
           this.myform.controls["nombreCampo"].setValue("");
           this.tipoalerta = "success";
