@@ -4,12 +4,12 @@
  <div class="top-bar grid-x grid-margin-x" id="responsive-menu">
    <div class="top-bar-left large-9">
      <ul class="dropdown menu" dropdown #dropdown="bs-dropdown" >
-        <li class="menu-text">Inicio</li>
+        <li class="menu-text"> <a href="admin">Inicio</a></li>
         <li dropdown #dropdownText="bs-dropdown"   class="is-dropdown-submenu-parent">
             <a dropdownToggle   >Categorias</a>
             <ul id="dropdown-categorias" *dropdownMenu class="menu is-dropdown-submenu" role="menu">
                 <li><a  href="crearCategoria">Crear categoria</a></li>
-                <li><a href="#">Editar categoria</a></li>
+                <li><a href="EditarCategoria">Editar categoria</a></li>
             </ul>
        </li>
         <li dropdown #dropdownText="bs-dropdown"   class="is-dropdown-submenu-parent">

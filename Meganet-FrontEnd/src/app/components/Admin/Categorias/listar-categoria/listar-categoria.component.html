@@ -1,0 +1,35 @@
+<app-header-menu></app-header-menu>
+<br>
+<div  class="grid-x grid-margin-x">
+  <div class="cell medium-6 large-1"> </div>
+  <div class="cell medium-6 large-10">
+    <div class="card" >
+      <div class="card-section">
+        <h2 class="text-center">Categorias</h2>
+        <hr/>
+
+        <p-table [value]="ListCategorias">
+          <ng-template pTemplate="header">
+              <tr>
+                  <th><strong>Nombre categoria</strong></th>
+                  <th><strong>Accion</strong></th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-Cateroria>
+              <tr>
+                  <td>{{Cateroria.nombreCategoria}}</td>
+                  <td>
+                    <button pButton pRipple type="button"  icon="pi pi-pencil" (click)="ShowModalEdit(Cateroria._id)"   class="p-button-rounded p-button-outlined"></button> &nbsp;
+                    <button pButton pRipple type="button"  icon="pi pi-trash" (click)="Cateroria._id"   class="p-button-rounded p-button-danger p-button-outlined"></button>
+
+
+                  </td>
+              </tr>
+          </ng-template>
+      </p-table>
+
+      </div>
+    </div>
+  </div>
+</div>
+
