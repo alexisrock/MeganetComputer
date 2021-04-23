@@ -7,6 +7,13 @@
       <div class="card-section">
         <h2 class="text-center">Categorias</h2>
         <hr/>
+        <div  *ngIf="mensajeError.trim()!==''" class="callout success" data-closable="slide-out-right"   >
+          {{mensajeError}}
+          <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div >
+       <br/>
 
         <p-table [value]="ListCategorias">
           <ng-template pTemplate="header">
@@ -20,13 +27,18 @@
                   <td>{{Cateroria.nombreCategoria}}</td>
                   <td>
                     <button pButton pRipple type="button"  icon="pi pi-pencil" (click)="ShowModalEdit(Cateroria._id)"   class="p-button-rounded p-button-outlined"></button> &nbsp;
-                    <button pButton pRipple type="button"  icon="pi pi-trash" (click)="Cateroria._id"   class="p-button-rounded p-button-danger p-button-outlined"></button>
-
-
+                    <button pButton pRipple type="button"  icon="pi pi-trash" (click)="DeleteCategoria(Cateroria._id)"   class="p-button-rounded p-button-danger p-button-outlined"></button>
                   </td>
               </tr>
           </ng-template>
       </p-table>
+      <p-dialog header="Editar Categoria" [(visible)]="display" [breakpoints]="{'960px': '75vw'}" [style]="{width: '50vw'}" [baseZIndex]="10000" [modal]="true" >
+        <div>
+          <app-editar-categoria  (display)="closeModalEdit($event)"     [idcategoria]="idcategoria" ></app-editar-categoria>
+        </div>
+
+       </p-dialog>
+
 
       </div>
     </div>

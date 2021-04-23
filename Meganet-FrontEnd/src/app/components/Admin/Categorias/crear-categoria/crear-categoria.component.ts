@@ -40,14 +40,14 @@ export class CrearCategoriaComponent implements OnInit {
         if (data['data']===undefined) {
           this.dismissible = true;
           this.myform.controls["nombreCampo"].setValue("");
-          this.tipoalerta = "success";
+          this.tipoalerta = "callout success";
           this.mensaje = "<strong> Categoria "+data["nombreCategoria"]+" creada con exito. </strong> ."
           setInterval(()=>{
             this.dismissible = false;
            }, 4000);
         }else{
           this.dismissible = true;
-          this.tipoalerta = "alert";
+          this.tipoalerta = "callout alert";
           this.mensaje = "<strong> ¡Error!</strong> "+data['message']+".";
           setInterval(()=>{
             this.dismissible = false;

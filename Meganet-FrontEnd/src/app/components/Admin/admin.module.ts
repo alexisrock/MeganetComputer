@@ -11,10 +11,12 @@ import { ListaMarcaComponent } from './lista-marca/lista-marca.component';
 import { CrearMarcaComponent } from './crear-marca/crear-marca.component';
 import { ListarCategoriaComponent } from './Categorias/listar-categoria/listar-categoria.component';
 import { CookieService } from 'ngx-cookie-service';
-import { AlertModule } from 'ngx-foundation';
+import { AlertModule, ModalModule  } from 'ngx-foundation';
 import {TableModule} from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
-
+import {DialogModule} from 'primeng/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EditarCategoriaComponent } from './Categorias/editar-categoria/editar-categoria.component';
 
 
 @NgModule({
@@ -27,6 +29,7 @@ import {ButtonModule} from 'primeng/button';
     ListaMarcaComponent,
     CrearMarcaComponent,
     ListarCategoriaComponent,
+    EditarCategoriaComponent,
   ],
   imports: [
     CommonModule,
@@ -34,8 +37,11 @@ import {ButtonModule} from 'primeng/button';
     FormsModule,
     ReactiveFormsModule,
     AlertModule.forRoot(),
+    ModalModule .forRoot(),
     TableModule,
-    ButtonModule
+    ButtonModule,
+    DialogModule,
+    BrowserAnimationsModule
 
   ],
   providers: [CookieService,     SharedModule],

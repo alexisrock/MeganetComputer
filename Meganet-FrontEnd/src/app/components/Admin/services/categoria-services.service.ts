@@ -36,5 +36,17 @@ export class CategoriaServicesService {
 
   }
 
+  DeleteCategoria(idCategoria){
+    return this.httpclient.delete(this.config.apiEndpoint+'categoria/'+idCategoria+'/delete', {headers: this.headers} );
+  }
+
+  GetCategoriaId(idcategoria){
+    console.log("categoria: "+idcategoria)
+    return this.httpclient.get<Categorias>(this.config.apiEndpoint+'categoria/'+idcategoria+'', {headers: this.headers} );
+  }
+
+  UpdateCategoria(idcategoria){
+    return this.httpclient.put(this.config.apiEndpoint+'categoria/'+idcategoria+'/update', {Categoriareq: this.categoria.nombreCategoria} ,{headers: this.headers} );
+  }
 
 }
