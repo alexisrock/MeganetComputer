@@ -9,8 +9,8 @@
         <br/>
         <img src="../../../assets/Img/meganet.jpg"   class="margin"  />
         <br/>
-        <div *ngIf="mensajeError!== ''" >
-            <div class="label alert">{{mensajeError}}</div>
+        <div *ngIf="mensajeError.trim()!==''" class="label alert" >
+           {{mensajeError}}
         </div>
         <br/>
         <input placeholder="Usuario"  type="text" formControlName="idusuario"/>

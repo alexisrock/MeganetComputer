@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Categorias } from '../../models/categoria';
 import { CategoriaServicesService } from '../../services/categoria-services.service';
 
@@ -9,8 +10,10 @@ import { CategoriaServicesService } from '../../services/categoria-services.serv
 })
 export class ListarCategoriaComponent implements OnInit {
 
-public ListCategorias: Categorias[] =[]
-
+public ListCategorias: Categorias[] =[];
+public mensajeError: string = "";
+public display: boolean = false;
+public idcategoria : Categorias ;
   constructor(public categoriaServices: CategoriaServicesService) {
     this.GetCategorias();
    }
@@ -27,11 +30,36 @@ public ListCategorias: Categorias[] =[]
     )
   }
 
-  ShowModalEdit(_id: string){
+  ShowModalEdit( _id: string){
+    this.categoriaServices.GetCategoriaId(_id).subscribe(data =>{
+    this.idcategoria = data['categoria'];
+    this.display = true;
 
+      });
+  }
+
+  closeModalEdit(event){
+    console.log(event)
+    this.display = event;
+    this.GetCategorias();
   }
 
   DeleteCategoria(_id: string){
+    this.categoriaServices.DeleteCategoria(_id).subscribe(data=>{
+    this.mensajeError = data['mensaje'];
+    setTimeout(function() {
+      this.mensajeError = '';
+    }.bind(this), 2500);
+
+    this.GetCategorias();
+    },error=> {
+      this.mensajeError = error;
+      setTimeout(function() {
+        this.mensajeError = '';
+      }.bind(this), 2500);
+
+    }
+    );
 
   }
 

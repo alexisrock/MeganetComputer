@@ -1,0 +1,25 @@
+
+
+   <form [formGroup]="myform" *ngIf="idcategoria!=null">
+
+    <div  class="{{tipoalerta}}"  *ngIf="dismissible"  (onClosed)="onClosed()" data-closable>
+      <span [innerHtml]="mensaje"></span>
+      <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="grid-x">
+      <div class="cell   small-4"><label>Nombre categoria</label></div>
+      <div class="cell   small-4">
+        <input formControlName="nombreCampo" value="{{idcategoria.nombreCategoria}}"  type="text"/>
+      </div>
+      <div class="cell   small-1" ></div>
+      <div class="cell   small-3" >
+        <button class="button primary" (click)="SaveCategoria()" >Guardar</button>
+      </div>
+    </div>
+
+
+
+    </form>

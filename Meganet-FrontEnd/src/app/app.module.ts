@@ -29,6 +29,7 @@ import { AuthService } from './services/auth.service';
 import { AdminModule } from './components/Admin/Admin.module';
 import { HeaderMenuComponent } from './shared/header-menu/header-menu.component';
 import {TableModule} from 'primeng/table';
+import {DialogModule} from 'primeng/dialog';
 
 export interface AppConfig{
   apiEndpoint: string;
@@ -51,7 +52,8 @@ export const APP_CONFIG = new InjectionToken<AppConfig>('app.config');
 
   ],exports: [
     HeaderMenuComponent,
-    TableModule
+    TableModule,
+  DialogModule
 
   ],
   imports: [

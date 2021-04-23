@@ -3,13 +3,9 @@
 @import 'foundation-sites/dist/css/foundation.css';
     @include foundation-everything;
 
-
-
+@import "~ngx-foundation/assets/scss/main";
 @import "ngx-foundation/dist/css/material-icons.css";
 
-@import '~motion-ui/src/motion-ui';
-  @include motion-ui-transitions;
-  @include motion-ui-animations;
 
 
   .card{

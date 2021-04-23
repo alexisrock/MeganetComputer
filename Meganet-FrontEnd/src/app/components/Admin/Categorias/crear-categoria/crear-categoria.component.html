@@ -12,9 +12,12 @@
           <div class="card-section">
               <form [formGroup]="myform">
 
-              <alert type="{{tipoalerta}}"  *ngIf="dismissible"  (onClosed)="onClosed()">
+              <div  class="{{tipoalerta}}"  *ngIf="dismissible"  (onClosed)="onClosed()" data-closable>
                 <span [innerHtml]="mensaje"></span>
-              </alert>
+                <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
 
               <div class="grid-x">
                 <div class="cell   small-4"><label>Nombre categoria</label></div>
