@@ -24,9 +24,9 @@ export class AuthService {
 
   }
 
-  logout(): any {
-    this.cookies.delete('username');
+  logout(){
     this.cookies.delete('token');
+    this.cookies.delete('username');
   }
 
   getUser(): any {

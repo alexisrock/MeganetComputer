@@ -1,7 +1,8 @@
 import { error } from '@angular/compiler/src/util';
-import { Component, OnInit, SecurityContext } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SecurityContext } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Categorias } from '../../models/categoria';
 
 import { CategoriaServicesService } from '../../services/categoria-services.service';
 @Component({
@@ -15,7 +16,10 @@ export class CrearCategoriaComponent implements OnInit {
   public dismissible = false;
   public tipoalerta = "";
   public mensaje =  "";
-
+  public Titulo: string = "";
+  public verEdit: boolean = false;
+  @Input('idcategoria') categoriaEdit: Categorias;
+  @Output('display') display = new EventEmitter();
 
   constructor( formbuilder: FormBuilder, private categoriaServices: CategoriaServicesService) {
     this.myform = formbuilder.group({
@@ -29,11 +33,66 @@ export class CrearCategoriaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.categoriaEdit!==undefined) {
+      this.verEdit= true;
+      this.showInfoCategoria();
+    }else{
+
+      this.verEdit= false;
+      this.Titulo = "Categoria";
+    }
+
+  }
+
+
+  showInfoCategoria(){
+    this.myform.get('nombreCampo').setValue(this.categoriaEdit.nombreCategoria);
+
+  }
+  Save(){
+    if (this.myform.valid) {
+
+      if (this.categoriaEdit!==undefined) {
+
+        this.updateCartegoria();
+      } else {
+        this.SaveCategoria();
+      }
+
+
+    }else{
+      this.dismissible = true;
+      this.tipoalerta = "alert";
+      this.mensaje = "<strong> ¡Error!</strong> Faltan datos por colocar."
+      setInterval(()=>{
+        this.dismissible = false;
+       }, 4000);
+
+    }
+  }
+
+  updateCartegoria(){
+this.categoriaServices.categoria.nombreCategoria = this.myform.value.nombreCampo;
+    this.categoriaServices.UpdateCategoria(this.categoriaEdit._id).subscribe(
+      data=>{
+        console.log(data);
+        if(data['mensaje']!=undefined){
+          this.display.emit(data['mensaje']);
+        }else{
+          this.dismissible = true;
+          this.tipoalerta = "callout alert";
+          this.mensaje = "<strong> ¡Error!</strong> "+data['message']+".";
+          setInterval(()=>{
+            this.dismissible = false;
+           }, 4000);
+        }
+      }
+    )
 
   }
 
   SaveCategoria(){
-    if (this.myform.valid) {
+
       this.categoriaServices.categoria.nombreCategoria = this.myform.value.nombreCampo;
       this.categoriaServices.SaveCategoria().subscribe( data =>{
         console.log(data);
@@ -63,15 +122,7 @@ export class CrearCategoriaComponent implements OnInit {
           this.dismissible = false;
          }, 4000);
       });
-    }else{
-      this.dismissible = true;
-      this.tipoalerta = "alert";
-      this.mensaje = "<strong> ¡Error!</strong> Faltan datos por colocar."
-      setInterval(()=>{
-        this.dismissible = false;
-       }, 4000);
 
-    }
 
 
   }

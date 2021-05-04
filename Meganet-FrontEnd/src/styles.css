@@ -1,10 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import 'foundation-sites/dist/css/foundation.css';
-    @include foundation-everything;
+@include foundation-everything;
 
 @import "~ngx-foundation/assets/scss/main";
 @import "ngx-foundation/dist/css/material-icons.css";
+
+@import '../node_modules/primeng/resources/primeng.min.css';
+@import '../node_modules/primeng/resources/themes/saga-blue/theme.css';
+@import '../node_modules/primeicons/primeicons.css';
+
+
 
 
 

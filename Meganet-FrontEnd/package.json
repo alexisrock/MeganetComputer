@@ -20,6 +20,7 @@
     "@angular/platform-browser": "~11.2.3",
     "@angular/platform-browser-dynamic": "~11.2.3",
     "@angular/router": "~11.2.3",
+    "angular-reactive-form": "^1.0.0",
     "foundation-sites": "^6.6.3",
     "jquery": "^3.6.0",
     "material-design-icons": "^3.0.1",
