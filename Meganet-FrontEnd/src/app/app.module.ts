@@ -21,7 +21,7 @@ import { AppComponent } from './app.component';
 import { HttpClient, HttpClientModule, HttpHeaders, HttpRequest} from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { ContentComponent } from './components/content/content.component';
-import { ListarProductoComponent } from './components/Admin/listar-producto/listar-producto.component';
+import { ListarProductoComponent } from './components/Admin/Producto/listar-producto/listar-producto.component';
 import { LoginComponent } from './components/Admin/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { APP_INITIALIZER, Injectable, InjectionToken  } from '@angular/core';

@@ -13,8 +13,7 @@ export class UserloguinGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       const isLoggedIn = this.authService.isLoggedIn();
-      console.log('canActivate', isLoggedIn);
       return isLoggedIn;
   }
-  
+
 }

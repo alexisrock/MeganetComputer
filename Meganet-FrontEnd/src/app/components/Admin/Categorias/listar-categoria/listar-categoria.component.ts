@@ -14,6 +14,9 @@ public ListCategorias: Categorias[] =[];
 public mensajeError: string = "";
 public display: boolean = false;
 public idcategoria : Categorias ;
+public tipoalerta: string = "";
+first = 0;
+rows = 10;
   constructor(public categoriaServices: CategoriaServicesService) {
     this.GetCategorias();
    }
@@ -30,29 +33,36 @@ public idcategoria : Categorias ;
     )
   }
 
-  ShowModalEdit( _id: string){
-    this.categoriaServices.GetCategoriaId(_id).subscribe(data =>{
-    this.idcategoria = data['categoria'];
+  ShowModalEdit( Categoria){
+
+    this.idcategoria = Categoria
     this.display = true;
 
-      });
+
   }
 
   closeModalEdit(event){
     console.log(event)
-    this.display = event;
+    this.display = false;
+    this.mensajeError = event;
+    this.tipoalerta = "callout success";
+    setTimeout(function() {
+      this.mensajeError = '';
+    }.bind(this), 2500);
     this.GetCategorias();
   }
 
   DeleteCategoria(_id: string){
     this.categoriaServices.DeleteCategoria(_id).subscribe(data=>{
     this.mensajeError = data['mensaje'];
+    this.tipoalerta = "callout success";
     setTimeout(function() {
       this.mensajeError = '';
     }.bind(this), 2500);
 
     this.GetCategorias();
     },error=> {
+      this.tipoalerta = "callout alert";
       this.mensajeError = error;
       setTimeout(function() {
         this.mensajeError = '';
@@ -62,6 +72,27 @@ public idcategoria : Categorias ;
     );
 
   }
+
+  next() {
+    this.first = this.first + this.rows;
+}
+
+prev() {
+    this.first = this.first - this.rows;
+}
+
+reset() {
+    this.first = 0;
+}
+
+isLastPage(): boolean {
+    return this.ListCategorias ? this.first === (this.ListCategorias.length - this.rows): true;
+}
+
+isFirstPage(): boolean {
+    return this.ListCategorias ? this.first === 0 : true;
+}
+
 
 
 }
