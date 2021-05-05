@@ -1,4 +1,10 @@
 export interface Marca {
   _id: string;
-  Descripcion: string;
+  marcaproducto?: string;
+}
+
+
+export interface Marca {
+  _id: string;
+  Descripcion?: string;
 }

@@ -42,7 +42,6 @@ rows = 10;
   }
 
   closeModalEdit(event){
-    console.log(event)
     this.display = false;
     this.mensajeError = event;
     this.tipoalerta = "callout success";

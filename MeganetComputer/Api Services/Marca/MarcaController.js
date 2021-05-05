@@ -22,12 +22,12 @@ console.log("creando"+nuevaMarca);
 }
 
 exports.Marca_update = function(req, res){
+    console.log(req.body);
     var datos = {
         Descripcion : req.body.Descripcion
     };    
-    Marca.findByIdAndUpdate(req.body.id, datos, function(){
+    Marca.findByIdAndUpdate(req.params.id, datos, function(){
         if(err) res.status(400).json({error: err.message });
-
         res.status(200).json({mensaje: "Datos actualizados correctamente"});
     });
 }
@@ -35,7 +35,7 @@ exports.Marca_update = function(req, res){
 
 
 exports.Marca_delete = function(req, res){
-    Marca.findByIdAndDelete(req.body.id, function(err){
+    Marca.findByIdAndDelete(req.params.id, function(err){
         if (err) {
             res.status(400).json({error: err.message });
         }

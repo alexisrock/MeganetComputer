@@ -96,6 +96,7 @@ this.categoriaServices.categoria.nombreCategoria = this.myform.value.nombreCampo
       this.categoriaServices.categoria.nombreCategoria = this.myform.value.nombreCampo;
       this.categoriaServices.SaveCategoria().subscribe( data =>{
         console.log(data);
+
         if (data['data']===undefined) {
           this.dismissible = true;
           this.myform.controls["nombreCampo"].setValue("");
@@ -116,7 +117,7 @@ this.categoriaServices.categoria.nombreCategoria = this.myform.value.nombreCampo
       },error=>{
 
         this.dismissible = true;
-        this.tipoalerta = "alert";
+        this.tipoalerta = "callout alert";
         this.mensaje = "<strong> ¡Error!</strong> "+error.message+"."
         setInterval(()=>{
           this.dismissible = false;

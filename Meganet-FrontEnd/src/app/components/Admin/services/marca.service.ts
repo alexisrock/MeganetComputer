@@ -22,14 +22,29 @@ export class MarcaService {
 
   public marca: Marca = {
     _id :"",
-    Descripcion:""
+    marcaproducto:"",
+  }
+
+  public marcaEdit: Marca = {
+    _id :"",
+    Descripcion:"",
   }
 
   GetAll(){
     return this.httpclient.get<Marca[]>(this.config.apiEndpoint+'Marca/', {headers: this.headers} );
   }
 
+  add(){
+    return this.httpclient.post(this.config.apiEndpoint+'Marca/create', this.marca,{headers: this.headers} );
+  }
 
+  Delete(idmarca){
+    return this.httpclient.delete(this.config.apiEndpoint+'Marca/'+idmarca+'/delete', {headers: this.headers} );
+  }
+
+  Update(idmarca){
+    return this.httpclient.put(this.config.apiEndpoint+'Marca/'+idmarca+'/update',  this.marcaEdit.Descripcion,{headers: this.headers} );
+  }
 
 
 
