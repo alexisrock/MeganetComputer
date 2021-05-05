@@ -1,1 +1,42 @@
-<p>crear-marca works!</p>
+<app-header-menu [hidden]="verEdit"></app-header-menu>
+<br>
+<div  class="grid-x grid-margin-x">
+  <div class="cell medium-1 large-1"> </div>
+  <div class="cell medium-10 large-10">
+    <div class="card" >
+      <div class="card-section">
+        <h2 class="text-center">{{Titulo}}</h2>
+        <hr/>
+
+        <div class="card2" >
+          <div class="card-section">
+              <form [formGroup]="myform">
+
+              <div  class="{{tipoalerta}}"  *ngIf="dismissible"  (onClosed)="onClosed()" data-closable>
+                <span [innerHtml]="mensaje"></span>
+                <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+
+              <div class="grid-x grid-margin-x">
+                <div class="cell medium-4 large-2"><label>Marca</label></div>
+                <div class="cell medium-4 large-4">
+                  <input formControlName="descripcion" type="text"/>
+                </div>
+
+                <div class="cell medium-4 large-2" >
+                  <button class="button primary" (click)="Save()">Guardar</button>
+                </div>
+              </div>
+
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="cell medium-1 large-1"> </div>
+</div>

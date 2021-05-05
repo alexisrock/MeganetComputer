@@ -29,8 +29,7 @@ exports.Categoria_create = function(req, res){
 }
 
 exports.Categortia_update = function(req, res){
-    var datos_categoria = {nombreCategoria: req.body.Categoriareq};
-    console.log(datos_categoria)
+    var datos_categoria = {nombreCategoria: req.body.Categoriareq};  
     Categoria.findByIdAndUpdate(req.params.id,datos_categoria, function(err){
         if(err) res.status(400).json({error: err.message });
 

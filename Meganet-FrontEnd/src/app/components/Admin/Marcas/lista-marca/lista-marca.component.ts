@@ -12,6 +12,7 @@ export class ListaMarcaComponent implements OnInit {
   public tipoalerta: string = "";
   public mensajeError: string = "";
   public display: boolean = false;
+  public marca: Marca;
   first = 0;
   rows = 10;
   constructor(public marcaservices: MarcaService) {
@@ -29,14 +30,38 @@ export class ListaMarcaComponent implements OnInit {
   }
 
   ShowModalEdit(marcas){
+    this.marca = marcas;
+    this.display = true;
 
   }
 
   Delete(_id: string){
+    this.marcaservices.Delete(_id).subscribe(
+      data=>
+      {
+        this.mensajeError = data['mensaje'];
+        this.tipoalerta = "callout success";
+        setTimeout(function() {
+          this.mensajeError = '';
+        }.bind(this), 2500);
+        this.GetAll();
+    }, error=>{
+      this.tipoalerta = "callout alert";
+      this.mensajeError = error;
+      setTimeout(function() {
+        this.mensajeError = '';
+      }.bind(this), 2500);
+    })
 
   }
 
   closeModalEdit(event){
-
+    this.display = false;
+    this.mensajeError = event;
+    this.tipoalerta = "callout success";
+    setTimeout(function() {
+      this.mensajeError = '';
+    }.bind(this), 2500);
+    this.GetAll();
   }
 }
