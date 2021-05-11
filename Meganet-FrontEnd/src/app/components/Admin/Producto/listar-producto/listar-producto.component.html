@@ -1,1 +1,64 @@
-<p>listar-producto works!</p>
+<app-header-menu></app-header-menu>
+<br>
+<div class="grid-x grid-margin-x">
+  <div class="cell medium-1 large-1"> </div>
+  <div class="cell medium-10 large-10">
+    <div class="card">
+      <div class="card-section">
+        <h2 class="text-center">Productos</h2>
+        <hr />
+        <div *ngIf="mensajeError.trim()!==''" class="{{tipoalerta}}" data-closable="slide-out-right">
+          {{mensajeError}}
+          <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <br />
+        <p-table [value]="listProductos" [paginator]="true" [rows]="10"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
+        <ng-template pTemplate="header">
+          <tr>
+            <th><strong>Codigo</strong></th>
+            <th><strong>Producto</strong></th>
+            <th><strong>Descripcion</strong></th>
+            <th><strong>Precio</strong></th>
+            <th><strong>Precio venta</strong></th>
+            <th><strong>Marca</strong></th>
+            <th><strong>Categoria</strong></th>
+            <th><strong>Pagina inicial</strong></th>
+            <th><strong>Estado</strong></th>
+            <th><strong>Accion</strong></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-producto>
+          <tr>
+            <td>{{producto.codigo}}</td>
+            <td>{{producto.Nombre}}</td>
+            <td>{{producto.Descripcion}}</td>
+            <td>{{producto.Precio}}</td>
+            <td>{{producto.PrecioVenta}}</td>
+            <td>{{ producto.Marca !== null? producto.Marca.Descripcion: ""}}</td>
+            <td>{{ producto.Categoria !== null? producto.Categoria.nombreCategoria: ""}}</td>
+            <td>{{ producto.EsPaginaInicial === true? "Si": "No"}}</td>
+            <td>{{ producto.Estado === true? "Activo": "Inactivo"}}</td>
+            <td>
+              <button pButton pRipple type="button" icon="pi pi-pencil" (click)="ShowModalEdit(producto)"
+                class="p-button-rounded p-button-outlined"></button> &nbsp;
+              <button pButton pRipple type="button" icon="pi pi-trash" (click)="Delete(producto._id)"
+                class="p-button-rounded p-button-danger p-button-outlined"></button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <p-dialog header="Editar marca" [(visible)]="display" [breakpoints]="{'960px': '75vw'}"
+        [style]="{width: '50vw'}" [baseZIndex]="10000" [modal]="true">
+        <app-crear-marca   (display)="closeModalEdit($event)"   *ngIf="display"  [idmarca]="marca"   ></app-crear-marca>
+      </p-dialog>
+
+
+      </div>
+    </div>
+
+  </div>
+  <div class="cell medium-1 large-1"> </div>
+</div>

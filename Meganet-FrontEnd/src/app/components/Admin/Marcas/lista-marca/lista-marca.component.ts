@@ -64,4 +64,26 @@ export class ListaMarcaComponent implements OnInit {
     }.bind(this), 2500);
     this.GetAll();
   }
+
+
+  next() {
+    this.first = this.first + this.rows;
+}
+
+prev() {
+    this.first = this.first - this.rows;
+}
+
+reset() {
+    this.first = 0;
+}
+
+isLastPage(): boolean {
+    return this.ListaMarcas ? this.first === (this.ListaMarcas.length - this.rows): true;
+}
+
+isFirstPage(): boolean {
+    return this.ListaMarcas ? this.first === 0 : true;
+}
+
 }

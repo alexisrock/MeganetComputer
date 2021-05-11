@@ -1,2 +1,100 @@
-<app-header-menu></app-header-menu>
-<label>hola alexis</label>
+<app-header-menu [hidden]="verEdit"></app-header-menu>
+<br>
+<div class="grid-x grid-margin-x">
+  <div class="cell medium-1 large-1"> </div>
+  <div class="cell medium-10 large-10">
+    <div class="card">
+      <div class="card-section">
+        <h2 class="text-center">{{Titulo}}</h2>
+        <hr />
+        <div class="card2">
+          <div class="card-section">
+            <form [formGroup]="myform">
+              <div class="{{tipoalerta}}" *ngIf="dismissible" (onClosed)="onClosed()" data-closable>
+                <span [innerHtml]="mensaje"></span>
+                <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <div class="grid-x grid-margin-x">
+                <div class="cell medium-4 large-2"><label>Codigo</label></div>
+                <div class="cell medium-4 large-4">
+                  <input formControlName="codigo" type="text" />
+                </div>
+
+                <div class="cell medium-4 large-2"><label>Nombre producto</label></div>
+                <div class="cell medium-4 large-4">
+                  <input formControlName="nombreproducto" type="text" />
+                </div>
+              </div>
+              <div class="grid-x grid-margin-x">
+
+                <div class="cell medium-4 large-2"><label>Precio</label></div>
+                <div class="cell medium-4 large-4">
+                  <input formControlName="precio" type="text" />
+                </div>
+                <div class="cell medium-4 large-2"><label>Precio venta</label></div>
+                <div class="cell medium-4 large-4">
+                  <input formControlName="precioventa" type="text" />
+                </div>
+              </div>
+              <div class="grid-x grid-margin-x">
+                <div class="cell medium-4 large-2"><label>Descripcion</label></div>
+                <div class="cell medium-4 large-4">
+                  <textarea formControlName="Descripcion" rows="4" type="text">
+                    </textarea>
+                </div>
+                <div class="cell medium-4 large-2"><label>Marca</label></div>
+                <div class="cell medium-4 large-4">
+                  <p-dropdown [options]="listmarca" formControlName="marca" [virtualScroll]="true" itemSize="30"
+                    optionValue="_id" optionLabel="Descripcion"></p-dropdown>
+                </div>
+
+              </div>
+              <div class="grid-x grid-margin-x">
+
+                <div class="cell medium-4 large-2"><label>Categoria</label></div>
+                <div class="cell medium-4 large-4">
+                  <p-dropdown [options]="listcategoria" formControlName="marca" [virtualScroll]="true" itemSize="30"
+                    optionValue="_id" optionLabel="nombreCategoria"></p-dropdown>
+                </div>
+                <div class="cell medium-4 large-2"><label>Archivo</label></div>
+                <div class="cell medium-4 large-4">
+                  <input type="file" />
+                </div>
+              </div>
+              <br>
+              <div class="grid-x grid-margin-x">
+
+                <div class="cell medium-4 large-4">
+                  <p-checkbox [binary]="true" label="Estado" formControlName="estado"></p-checkbox>
+                </div>
+                <div class="cell medium-4 large-4">
+                  <p-checkbox [binary]="true" label="espaginainicial" formControlName="espaginainicial"></p-checkbox>
+                </div>
+
+              </div>
+              <br>
+              <br>
+              <div class="grid-x grid-margin-x">
+                <div class="cell medium-4 large-2">
+                  <button class="button primary" (click)="Save()">Guardar</button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+
+
+
+
+  </div>
+  <div class="cell medium-1 large-1"> </div>
+</div>
