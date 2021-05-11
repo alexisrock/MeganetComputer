@@ -43,7 +43,7 @@ export class MarcaService {
   }
 
   Update(idmarca){
-    return this.httpclient.put(this.config.apiEndpoint+'Marca/'+idmarca+'/update',  this.marcaEdit.Descripcion,{headers: this.headers} );
+    return this.httpclient.put(this.config.apiEndpoint+'Marca/'+idmarca+'/update',  {Descripcion: this.marcaEdit.Descripcion} ,{headers: this.headers} );
   }
 
 

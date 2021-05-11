@@ -110,6 +110,7 @@ export class CrearMarcaComponent implements OnInit {
     this.marcaservices.Update(this.marcaEdit._id).subscribe(
       data=>{
         console.log(data);
+        console.log(JSON.stringify(this.marcaservices.marcaEdit));
         if(data['mensaje']!=undefined){
           this.display.emit(data['mensaje']);
         }else{

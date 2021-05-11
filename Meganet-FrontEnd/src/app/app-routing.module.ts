@@ -10,6 +10,7 @@ import { CrearCategoriaComponent } from './components/Admin/Categorias/crear-cat
 import { ListarCategoriaComponent } from './components/Admin/Categorias/listar-categoria/listar-categoria.component';
 import { CrearMarcaComponent } from './components/Admin/Marcas/crear-marca/crear-marca.component';
 import { ListaMarcaComponent } from './components/Admin/Marcas/lista-marca/lista-marca.component';
+import { ListarProductoComponent } from './components/Admin/Producto/listar-producto/listar-producto.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: "full" },
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'EditarCategoria', component: ListarCategoriaComponent,  canActivate: [UserloguinGuard]},
   { path: 'CrearMarca', component: CrearMarcaComponent, canActivate: [UserloguinGuard]  },
   { path: 'EditarMarca', component: ListaMarcaComponent, canActivate: [UserloguinGuard]  },
-
+  { path: 'CrearProducto', component: CrearProductoComponent, canActivate: [UserloguinGuard]  },
+  { path: 'EditarProducto', component: ListarProductoComponent, canActivate: [UserloguinGuard]  },
 ]
 
 
