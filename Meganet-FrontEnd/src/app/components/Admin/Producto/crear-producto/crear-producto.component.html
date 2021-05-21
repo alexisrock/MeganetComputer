@@ -9,7 +9,7 @@
         <hr />
         <div class="card2">
           <div class="card-section">
-            <form [formGroup]="myform">
+            <form [formGroup]="myform"  enctype="multipart/form-data">
               <div class="{{tipoalerta}}" *ngIf="dismissible" (onClosed)="onClosed()" data-closable>
                 <span [innerHtml]="mensaje"></span>
                 <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
@@ -21,11 +21,28 @@
                 <div class="cell medium-4 large-2"><label>Codigo</label></div>
                 <div class="cell medium-4 large-4">
                   <input formControlName="codigo" type="text" />
+                  <div class="validation-errors">
+
+                    <ng-container *ngFor="let validador of validation.codigo">
+                      <div
+                        *ngIf="myform.get('codigo').hasError(validador.type) && (myform.get('codigo').dirty || myform.get('codigo').touch) ">
+                        {{validador.message}}
+                      </div>
+                    </ng-container>
+                  </div>
                 </div>
 
                 <div class="cell medium-4 large-2"><label>Nombre producto</label></div>
                 <div class="cell medium-4 large-4">
                   <input formControlName="nombreproducto" type="text" />
+                  <div class="validation-errors">
+                    <ng-container *ngFor="let validador of validation.nombreproducto">
+                      <div
+                        *ngIf="myform.get('nombreproducto').hasError(validador.type) && (myform.get('nombreproducto').dirty || myform.get('nombreproducto').touch) ">
+                        {{validador.message}}
+                      </div>
+                    </ng-container>
+                  </div>
                 </div>
               </div>
               <div class="grid-x grid-margin-x">
@@ -33,10 +50,28 @@
                 <div class="cell medium-4 large-2"><label>Precio</label></div>
                 <div class="cell medium-4 large-4">
                   <input formControlName="precio" type="text" />
+                  <div class="validation-errors">
+
+                    <ng-container *ngFor="let validador of validation.precio">
+                      <div
+                        *ngIf="myform.get('precio').hasError(validador.type) && (myform.get('precio').dirty || myform.get('precio').touch) ">
+                        {{validador.message}}
+                      </div>
+                    </ng-container>
+                  </div>
                 </div>
                 <div class="cell medium-4 large-2"><label>Precio venta</label></div>
                 <div class="cell medium-4 large-4">
                   <input formControlName="precioventa" type="text" />
+                  <div class="validation-errors">
+
+                    <ng-container *ngFor="let validador of validation.precioventa">
+                      <div
+                        *ngIf="myform.get('precioventa').hasError(validador.type) && (myform.get('precioventa').dirty || myform.get('precioventa').touch) ">
+                        {{validador.message}}
+                      </div>
+                    </ng-container>
+                  </div>
                 </div>
               </div>
               <div class="grid-x grid-margin-x">
@@ -44,11 +79,28 @@
                 <div class="cell medium-4 large-4">
                   <textarea formControlName="Descripcion" rows="4" type="text">
                     </textarea>
+                    <div class="validation-errors">
+
+                      <ng-container *ngFor="let validador of validation.Descripcion">
+                        <div
+                          *ngIf="myform.get('Descripcion').hasError(validador.type) && (myform.get('Descripcion').dirty || myform.get('Descripcion').touch) ">
+                          {{validador.message}}
+                        </div>
+                      </ng-container>
+                    </div>
                 </div>
                 <div class="cell medium-4 large-2"><label>Marca</label></div>
                 <div class="cell medium-4 large-4">
                   <p-dropdown [options]="listmarca" formControlName="marca" [virtualScroll]="true" itemSize="30"
                     optionValue="_id" optionLabel="Descripcion"></p-dropdown>
+                    <div class="validation-errors">
+                      <ng-container *ngFor="let validador of validation.marca">
+                        <div
+                          *ngIf="myform.get('marca').hasError(validador.type) && (myform.get('marca').dirty || myform.get('marca').touch) ">
+                          {{validador.message}}
+                        </div>
+                      </ng-container>
+                    </div>
                 </div>
 
               </div>
@@ -56,12 +108,20 @@
 
                 <div class="cell medium-4 large-2"><label>Categoria</label></div>
                 <div class="cell medium-4 large-4">
-                  <p-dropdown [options]="listcategoria" formControlName="marca" [virtualScroll]="true" itemSize="30"
+                  <p-dropdown [options]="listcategoria" formControlName="categoria" [virtualScroll]="true" itemSize="30"
                     optionValue="_id" optionLabel="nombreCategoria"></p-dropdown>
+                    <div class="validation-errors">
+                      <ng-container *ngFor="let validador of validation.categoria">
+                        <div
+                          *ngIf="myform.get('categoria').hasError(validador.type) && (myform.get('categoria').dirty || myform.get('categoria').touch) ">
+                          {{validador.message}}
+                        </div>
+                      </ng-container>
+                    </div>
                 </div>
                 <div class="cell medium-4 large-2"><label>Archivo</label></div>
                 <div class="cell medium-4 large-4">
-                  <input type="file" />
+                  <input type="file"  (change)="fileChange($event)" formControlName="file"  />
                 </div>
               </div>
               <br>
@@ -69,9 +129,11 @@
 
                 <div class="cell medium-4 large-4">
                   <p-checkbox [binary]="true" label="Estado" formControlName="estado"></p-checkbox>
+
                 </div>
                 <div class="cell medium-4 large-4">
                   <p-checkbox [binary]="true" label="espaginainicial" formControlName="espaginainicial"></p-checkbox>
+
                 </div>
 
               </div>

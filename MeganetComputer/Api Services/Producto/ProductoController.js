@@ -1,4 +1,5 @@
-var Producto = require('./Producto');
+var Producto = require('./Producto'); 
+var multer = require('multer'); 
 
 
 exports.Producto_list = function(req, res){
@@ -9,9 +10,15 @@ exports.Producto_list = function(req, res){
     });
 
 }
-
-
 exports.Producto_create = function(req, res){
+    try {
+    console.log(req.body.archivo.name);
+    console.log(req.body)
+    var upload = multer({ dest: '../../public/images'})
+    upload.single(req.body.archivo)
+    console.log(req.file)
+    console.log('salio al inicio de la carga')
+
     var nuevoProducto = new Producto({
         codigo : req.body.codproducto,
         Nombre : req.body.nombreproducto,
@@ -24,7 +31,8 @@ exports.Producto_create = function(req, res){
         UrlImagen: req.body.urldeimagen
     });
 
-  Producto.find({EsPaginaInicial: true}).countDocuments(function(err, result){
+
+    Producto.find({EsPaginaInicial: true}).countDocuments(function(err, result){
             console.log(result);
         if(result>10){
             res.status(400).json({
@@ -38,6 +46,10 @@ exports.Producto_create = function(req, res){
             });
         }
     });
+    } catch (error) {
+    console.log(error.message)
+}
+
 
 }
 
@@ -78,6 +90,10 @@ exports.Producto_Delete = function(req, res){
         }
     })
 
+
+    cargarArchivo(archivo)= function(){
+      
+    }
 
 
 }
