@@ -1,59 +1,55 @@
-
-
-
- <div class="top-bar grid-x grid-margin-x" id="responsive-menu">
-   <div class="top-bar-left cell medium-10 large-10">
-     <ul class="dropdown menu grid-x grid-margin-x " dropdown #dropdown="bs-dropdown" >
-        <li class="menu-text cell medium-1 large-2"> <a href="admin">Inicio</a></li>
-        <li dropdown #dropdownText="bs-dropdown"   class="is-dropdown-submenu-parent cell medium-1 large-2">
-            <a dropdownToggle   >Categorias</a>
-            <ul id="dropdown-categorias" *dropdownMenu class="menu is-dropdown-submenu" role="menu">
-                <li><a  href="CrearCategoria">Crear categoria</a></li>
-                <li><a href="EditarCategoria">Editar categoria</a></li>
-            </ul>
-       </li>
-        <li dropdown #dropdownText="bs-dropdown"   class="is-dropdown-submenu-parent cell medium-1 large-2">
-            <a  dropdownToggle  >Marcas</a>
-            <ul id="dropdown-marca" *dropdownMenu class="menu is-dropdown-submenu" role="menu">
-                <li><a href="CrearMarca">Crear marca</a></li>
-                <li><a href="EditarMarca">Editar marca</a></li>
-            </ul>
-        </li>
-        <li dropdown #dropdownText="bs-dropdown"   class="is-dropdown-submenu-parent cell medium-1 large-2">
-            <a  dropdownToggle  >Productos</a>
-            <ul id="dropdown-producto" *dropdownMenu class="menu is-dropdown-submenu" role="menu">
-                <li><a href="CrearProducto">Crear producto</a></li>
-                <li><a href="EditarProducto">Editar producto</a></li>
-            </ul>
-        </li>
-        <li>
+<div class="top-bar grid-x grid-margin-x" id="responsive-menu">
+  <div class="top-bar-left cell medium-10 large-10">
+    <ul class="dropdown menu grid-x grid-margin-x " dropdown #dropdown="bs-dropdown">
+      <li class="menu-text cell medium-1 large-1"> <a href="admin">Inicio</a></li>
+      <li dropdown #dropdownText="bs-dropdown" class="has-submenu is-dropdown-submenu-parent opens-right cell medium-1  large-2">
+        <a dropdownToggle>Categorias </a>
+        <ul id="dropdown-categorias" *dropdownMenu class="menu is-dropdown-submenu" role="menu">
+          <li><a routerLink="CrearCategoria" >Crear categoria</a></li>
+          <li><a routerLink="EditarCategoria" >Editar categoria</a></li>
+        </ul>
+      </li>
+      <li dropdown #dropdownText="bs-dropdown" class=" has-submenu is-dropdown-submenu-parent opens-right  cell medium-1 large-2">
+        <a dropdownToggle>Marcas</a>
+        <ul id="dropdown-marca" *dropdownMenu class="menu is-dropdown-submenu" role="menu">
+          <li><a routerLink="CrearMarca">Crear marca</a></li>
+          <li><a routerLink="EditarMarca">Editar marca</a></li>
+        </ul>
+      </li>
+      <li dropdown #dropdownText="bs-dropdown" class="has-submenu is-dropdown-submenu-parent opens-right  cell medium-1 large-2">
+        <a dropdownToggle>Productos</a>
+        <ul id="dropdown-producto" *dropdownMenu class="menu is-dropdown-submenu" role="menu">
+          <li><a routerLink="CrearProducto">Crear producto</a></li>
+          <li><a routerLink="EditarProducto">Editar producto</a></li>
+        </ul>
+      </li>
+      <li>
 
       </li>
     </ul>
-   </div>
+  </div>
 
-    <div class="top-bar-right  cell medium-2 large-2">
-        <ul class="menu grid-x">
+  <div class="top-bar-right  cell medium-2 large-2">
+    <ul class="menu grid-x">
 
-       <ul class="dropdown vertical menu large-3" dropdown #dropdown="bs-dropdown" [autoClose]="false">
-         <li class="is-dropdown-submenu-parent">
-           <button dropdownToggle type="button" class="clear button round secondary" aria-controls="accountdropdown">
-             <span class="material-icons" style="font-size: 2rem;">face</span>
-           </button>
-           <ul id="accountdropdown" *dropdownMenu class="menu is-dropdown-submenu" role="menu">
-             <li role="menuitem"><a href="#">Alexis Bueno </a></li>
-             <hr/>
+      <ul class="dropdown vertical menu large-3" dropdown #dropdown="bs-dropdown" [autoClose]="false">
+        <li class="is-dropdown-submenu-parent">
+          <button dropdownToggle type="button" class="clear button round secondary" aria-controls="accountdropdown">
+            <span class="material-icons" style="font-size: 2rem;">face</span>
+          </button>
+          <ul id="accountdropdown" *dropdownMenu class="menu is-dropdown-submenu" role="menu">
+            <li role="menuitem"><a href="#">{{nombreUsuario}} </a></li>
+            <hr />
 
-             <li role="menuitem"><a (click)="closedSession()"><span class="material-icons">
-               power_settings_new
-               </span>Cerrar Sesion</a></li>
+            <li role="menuitem"><a (click)="closedSession()"><span class="material-icons" style="font-size: 20px;">
+                  power_settings_new
+                </span>Cerrar Sesion</a></li>
 
 
 
-           </ul>
-         </li>
-       </ul>
-     </ul>
-   </div>
+          </ul>
+        </li>
+      </ul>
+    </ul>
+  </div>
 </div>
-

@@ -6,12 +6,12 @@
   "scripts": {
     "start": "node ./bin/www",
     "devstart": "nodemon  ./bin/www",
-    "test": "jasmine",
+    "test": "mocha",
     "heroku-postbuild ": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alexisrock/MeganetComputer.git"
+    "url": "git+https://github.com/alexisrock /MeganetComputer.git"
   },
   "keywords": [
     "berlis1955"
@@ -42,5 +42,8 @@
     "passport": "^0.4.1",
     "request": "^2.88.2",
     "serve": "^11.3.2"
+  },
+  "devDependencies": {
+    "mocha": "^8.4.0"
   }
 }

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
-import { AlertModule, 
+import { AlertModule,
   AccordionModule,
-   ButtonsModule, 
+   ButtonsModule,
    CarouselModule ,
     CollapseModule,
     BsDatepickerModule,
@@ -20,12 +20,14 @@ import { AlertModule,
     TooltipModule, } from 'ngx-foundation';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderMenuComponent } from './header-menu/header-menu.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, HeaderMenuComponent],
   imports: [
     CommonModule,
+    RouterModule,
     AccordionModule.forRoot(),
     AlertModule.forRoot(),        // Foundation Callouts
     ButtonsModule.forRoot(),

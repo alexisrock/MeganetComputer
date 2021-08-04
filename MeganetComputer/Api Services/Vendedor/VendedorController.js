@@ -4,7 +4,8 @@ var Vendedor = require('./Vendedor');
 exports.Vendedor_create = function(req, res){
     var nuevoVendedor = new Vendedor({
         usuario : req.body.Idusuario,
-        password : req.body.pass
+        password : req.body.pass,
+        nombre: req.body.nombre
     });
 
     nuevoVendedor.save(function(err){
@@ -16,7 +17,8 @@ exports.Vendedor_create = function(req, res){
 exports.Vendedor_update = function(req, res){
     var datosVendedor = {
         usuario : req.body.Idusuario,
-        password : req.body.pass
+        password : req.body.pass,
+        nombre: req.body.nombre
     }
 
     Vendedor.findByIdAndUpdate(req.body.id,datosVendedor, function(err){

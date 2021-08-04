@@ -21,7 +21,11 @@ let  Vendedorschema = new Schema({
         type: Date,
         default: Date.now
 
-    }
+    },
+    nombre:  {
+        type: String,
+        required: true
+    },
 
 });
 

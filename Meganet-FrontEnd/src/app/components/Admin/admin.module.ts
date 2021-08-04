@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { CrearCategoriaComponent } from './Categorias/crear-categoria/crear-categoria.component';
 import { CrearProductoComponent } from './Producto/crear-producto/crear-producto.component';
 import { ListarProductoComponent } from './Producto/listar-producto/listar-producto.component';
-import { LoginComponent } from './login/login.component';
+
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PrincipalComponent } from './principal/principal.component';
@@ -18,6 +18,11 @@ import {DialogModule} from 'primeng/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {DropdownModule} from 'primeng/dropdown';
 import {CheckboxModule} from 'primeng/checkbox';
+import { AdminRoutesModule } from './admin-routes.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 
 @NgModule({
   declarations: [
@@ -25,10 +30,11 @@ import {CheckboxModule} from 'primeng/checkbox';
     CrearProductoComponent,
     ListarProductoComponent,
     PrincipalComponent,
-    LoginComponent,
+
     ListaMarcaComponent,
     CrearMarcaComponent,
     ListarCategoriaComponent,
+    DashboardComponent,
 
   ],
   imports: [
@@ -41,11 +47,12 @@ import {CheckboxModule} from 'primeng/checkbox';
     TableModule,
     ButtonModule,
     DialogModule,
-    BrowserAnimationsModule,
+
     DropdownModule,
-    CheckboxModule
+    CheckboxModule,
+    AdminRoutesModule
 
   ],
-  providers: [CookieService,     SharedModule],
+  providers: [CookieService,       SharedModule],
 })
 export class AdminModule { }

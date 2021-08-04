@@ -22,7 +22,7 @@ import { HttpClient, HttpClientModule, HttpHeaders, HttpRequest} from '@angular/
 import { SharedModule } from './shared/shared.module';
 import { ContentComponent } from './components/content/content.component';
 import { ListarProductoComponent } from './components/Admin/Producto/listar-producto/listar-producto.component';
-import { LoginComponent } from './components/Admin/login/login.component';
+import { LoginComponent } from './components/auth/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { APP_INITIALIZER, Injectable, InjectionToken  } from '@angular/core';
 import { AuthService } from './services/auth.service';
@@ -30,6 +30,15 @@ import { AdminModule } from './components/Admin/Admin.module';
 import { HeaderMenuComponent } from './shared/header-menu/header-menu.component';
 import {TableModule} from 'primeng/table';
 import {DialogModule} from 'primeng/dialog';
+import { AuthModule } from './components/auth/auth.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { StoreModule } from '@ngrx/store';
+import { appReducers } from './app.reducer';
+import { environment } from 'src/environments/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+
 
 export interface AppConfig{
   apiEndpoint: string;
@@ -59,7 +68,7 @@ export const APP_CONFIG = new InjectionToken<AppConfig>('app.config');
   imports: [
     BrowserModule,
     SharedModule,
-    AdminModule,
+    AuthModule,
     AppRoutingModule,
     HttpClientModule,
     AccordionModule.forRoot(),
@@ -79,6 +88,14 @@ export const APP_CONFIG = new InjectionToken<AppConfig>('app.config');
     TimepickerModule.forRoot(),
     TooltipModule.forRoot(),
     TypeaheadModule.forRoot(),
+    BrowserAnimationsModule,
+    StoreModule.forRoot(appReducers),
+    EffectsModule,
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+      autoPause: true, // Pauses recording actions and state changes when the extension window is not open
+    })
   ],
   providers: [
     AuthService,

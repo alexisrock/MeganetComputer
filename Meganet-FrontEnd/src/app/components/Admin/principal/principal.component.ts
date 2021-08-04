@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -10,9 +10,13 @@ import { AuthService } from 'src/app/services/auth.service';
 export class PrincipalComponent implements OnInit {
 
 
-  constructor(public auth: AuthService) {
+  constructor(public auth: AuthService,private renderer: Renderer2,) {
 
-
+    this.renderer.setStyle(
+      document.body,
+      "background-color",
+      '#fff'
+    );
    }
 
   ngOnInit(): void {

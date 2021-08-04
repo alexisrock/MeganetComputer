@@ -9,11 +9,13 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderMenuComponent implements OnInit {
 
+  nombreUsuario: string = "";
 
   constructor(public auth: AuthService, public router: Router,) { }
 
   ngOnInit(): void {
     this.GetUserLoggued();
+    this.nombreUsuario = this.auth.getNombreUsuario();
   }
 
   GetUserLoggued(){
@@ -22,7 +24,7 @@ export class HeaderMenuComponent implements OnInit {
 
   closedSession(){
     this.auth.logout();
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('');
   }
 
 }
