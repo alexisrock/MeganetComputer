@@ -9,7 +9,7 @@ import { CookieService } from "ngx-cookie-service";
 })
 export class AuthService {
 
-  constructor( private http: HttpClient,   @Inject(forwardRef(() => APP_CONFIG)) private config: AppConfig , private cookies: CookieService) { }
+  constructor( private http: HttpClient,   @Inject(forwardRef(() => APP_CONFIG)) private config: AppConfig ) { }
 
    login(user: string, password: string) {
 
@@ -25,24 +25,32 @@ export class AuthService {
   }
 
   logout(){
-    this.cookies.delete('token');
-    this.cookies.delete('username');
+    sessionStorage.clear();
+
   }
 
   getUser(): any {
-    return this.cookies.get('username');
+    return sessionStorage.getItem('username');
   }
 
   setUser(Usuario: string){
-    this.cookies.set('username', Usuario);
+    sessionStorage.setItem('username', Usuario);
   }
 
   getToken(): any{
-    return this.cookies.get('token');
+    return sessionStorage.getItem('token');
   }
 
   setToken(token: string){
-    this.cookies.set('token', token);
+    sessionStorage.setItem('token', token);
+  }
+
+  setNombreUsuario(nombre:string){
+    sessionStorage.setItem('nombreUsuario', nombre);
+  }
+
+  getNombreUsuario(){
+    return sessionStorage.getItem('nombreUsuario');
   }
 
 

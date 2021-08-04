@@ -91,8 +91,6 @@ function validarConsumo(req, res, next){
    }
   });
 
-  
-
 }
 
 

@@ -14,7 +14,7 @@ exports.Producto_create = function(req, res){
     try {
     console.log(req.body.archivo.name);
     console.log(req.body)
-    var upload = multer({ dest: '../../public/images'})
+    var upload = multer({ dest: '../../../public/images'})
     upload.single(req.body.archivo)
     console.log(req.file)
     console.log('salio al inicio de la carga')
@@ -89,11 +89,4 @@ exports.Producto_Delete = function(req, res){
         res.status(200).json({mensaje: "Inventario Eliminado"});
         }
     })
-
-
-    cargarArchivo(archivo)= function(){
-      
-    }
-
-
 }

@@ -28,8 +28,7 @@ module.exports = {
 
     authenticateVendedor: function(req, res, next){
         Vendedor.findOne({usuario: req.body.idusuario}, function(err, userinfo){
-     console.log('usuario: '+req.body.idusuario);
-     console.log('password: '+req.body.password);
+ 
 
             if(err){
                 next(err);                
